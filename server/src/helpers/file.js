@@ -39,62 +39,8 @@ const files = {
 			});
 		}
 		else { cli.error('\nThe file already exists.\n')}
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// read: (filename) => {
-	// 	const file = path.resolve(__dirname, '../', 'cache', filename);
-	// 	const data = fs.readFileSync(file);
-	// 	return JSON.parse(data);
-	// },
-	// write: (content, filename) => {
-	// 	const file = path.resolve(__dirname, '../', 'cache', filename);
-	// 	fs.writeFile(file, content, (error) => error && console.log(error.message));
-	// },
-	// copy: (req, res) => {
-	// 	const files = ['counter.json', 'all-projects-total.json', 'issues.json', 'projects.json', 'repos.json', 'gists.json', 'gist.json'];
-	// 	const output = [];
-	// 	files.forEach(item => {
-	// 		const source = path.resolve(__dirname, 'cache', item);
-	// 		const destination = path.resolve(__dirname, '..', 'client', 'src', 'cache', item);
-	// 		fs.copyFile(source + item, destination + item, error => error && console.log(error));
-	// 		output.push(`The cache file (${item}) was copied to ${destination}.`);
-	// 	});
-	// 	res.send(JSON.stringify(output));
-	// },
-	// updateProjectsJSON: (counter, label, filename) => {
-	// 	let json = cache.read(filename);
-	// 	json.data.projects.map(item => {
-	// 		if (item.name === label) {
-	// 			item.counter.issues = counter.issues;
-	// 			item.counter.tasks = counter.tasks;
-	// 		}
-	// 	})
-	// 	cache.write(JSON.stringify(json), filename);
-	// },
-	// updateCounterJSON: (counter, label, filename) => {
-	// 	const json = cache.read(filename);
-	// 	json.currentLabel.label = label;
-	// 	json.currentLabel.issues = counter.issues;
-	// 	json.currentLabel.tasks = counter.tasks;
-	// 	cache.write(JSON.stringify(json), filename);
-	// },
+	},
+	removeHiddenFiles: (list) => list.filter(item => (!item.startsWith('.')) && item),
 }
 
 module.exports = files;
